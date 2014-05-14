@@ -32,15 +32,29 @@ mongoose.connection.on('error', function(err){
 	console.log('database connect error: ' + err);
 });
 
-mongoose.connection.once('open', function() {
-	var greeting;
-	Greeting.find( function(err, greetings) {
-		if (!greetings) {
-			greeting = new Greeting({sentence: helloGreeting});
-			greeting.save();
-		}
-	});
-});
+ Greeting.find( function(err, greetings){
+    if( !err && greetings ){ // at least one greeting record already exists in our db. we can use that
+      console.log(greetings.length+' greetings already exist in DB' );
+    }
+    else { // no records found
+      console.log('no greetings in DB yet, creating one' );
+
+      greeting = new Greeting({ sentence: standardGreeting });
+      greeting.save(function (err, greetingsav) {
+        if (err){ // TODO handle the error
+          console('couldnt save a greeting to the Db');
+        }
+        else{
+          console.log('new greeting '+greeting.sentence+' was succesfully saved to Db' );
+
+          Greeting.find( function(err, greetings){
+            if( greetings )
+              console.log('checked after save: found '+greetings.length+' greetings in DB' );
+          }); // Greeting.find()
+        } // else
+      }); // greeting.save()
+    } // if no records
+  }); // Greeting.find()
 
 app.get('/', function(req, res) {
 	Greeting.find(function (err, greetings) {
