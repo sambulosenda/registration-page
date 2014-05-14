@@ -33,7 +33,7 @@ mongoose.connection.on('error', function(err){
 });
 
 Greeting.find( function(err, greetings){
-	var greeting = new Greeting({ sentence: standardGreeting });
+	var greeting = new Greeting({ sentence: helloGreeting });
 	greeting.save(function (err, greetingsav) {
 		if (err){
 			console('couldnt save a greeting to the Db');
