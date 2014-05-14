@@ -28,6 +28,10 @@ var greetingSchema = mongoose.Schema({
 var Greeting = mongoose.model('Greeting', greetingSchema);
 db = mongoose.connect(dbPath);
 
+mongoose.connection.on('error', function(err){
+	console.log('database connect error: ' + err);
+});
+
 mongoose.connection.once('open', function() {
 	var greeting;
 	Greeting.find( function(err, greetings) {
