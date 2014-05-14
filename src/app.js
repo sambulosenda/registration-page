@@ -43,8 +43,18 @@ mongoose.connection.once('open', function() {
 });
 
 app.get('/', function(req, res) {
-	Greeting.findOne(function(err, greeting) {
-		res.send(greeting.sentence);
+	Greeting.find(function (err, greetings) {
+		if (err) {
+			console.log('couldnt find a greeting in DB. error '+err);
+			next(err);
+		} else {
+			if(greetings){
+				console.log('found '+greetings.length+' greetings in DB');
+        		responseText = greetings[0].sentence;
+	    	}
+    		console.log('sending greeting to client: '+responseText);
+	    	res.send(responseText);
+		}
 	});
 });
 
