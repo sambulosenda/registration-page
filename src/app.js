@@ -46,15 +46,15 @@ app.get('/', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-	console.log('Response: ', res.body);
+	console.log('Request: ', req.body);
 	var registeredUser = new Attendee({
-		name: res.name,
-		companyName: res.companyName,
-		address: res.address,
-		phoneNumber: res.phoneNumber,
-		email: res.email,
-		attendance: res.attendance,
-		comment: res.comment
+		name: req.name,
+		companyName: req.companyName,
+		addreqs: req.addreqs,
+		phoneNumber: req.phoneNumber,
+		email: req.email,
+		attendance: req.attendance,
+		comment: req.comment
 	});
 
 	registeredUser.save(function(err, thor) {
