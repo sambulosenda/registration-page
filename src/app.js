@@ -5,8 +5,7 @@ var express = require('express');
 var app = express();
 var db;
 
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(require('body-parser')());
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 
