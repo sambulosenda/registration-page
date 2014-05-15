@@ -5,6 +5,8 @@ var express = require('express');
 var app = express();
 var db;
 
+app.use(express.json());
+app.use(express.urlencoded());
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 
@@ -48,13 +50,13 @@ app.get('/', function(req, res) {
 app.post('/register', function(req, res) {
 	console.log('Request: ', req.body);
 	var registeredUser = new Attendee({
-		name: req.name,
-		companyName: req.companyName,
-		addreqs: req.addreqs,
-		phoneNumber: req.phoneNumber,
-		email: req.email,
-		attendance: req.attendance,
-		comment: req.comment
+		name: req.body.name,
+		companyName: req.body.companyName,
+		addreqs: req.body.addreqs,
+		phoneNumber: req.body.phoneNumber,
+		email: req.body.email,
+		attendance: req.body.attendance,
+		comment: req.body.comment
 	});
 
 	registeredUser.save(function(err, thor) {
