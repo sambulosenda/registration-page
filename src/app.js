@@ -1,11 +1,12 @@
 var http = require('http');
 var mongoose = require('mongoose');
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
 var db;
 
-app.use(require('body-parser')());
+app.use(bodyParser);
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 
