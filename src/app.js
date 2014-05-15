@@ -5,6 +5,9 @@ var express = require('express');
 var app = express();
 var db;
 
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+
 var config = {      
 	"USER": "",
 	"PASS": "",
@@ -49,6 +52,7 @@ Greeting.find( function(err, greetings){
   }); // Greeting.find()
 
 app.get('/', function(req, res) {
+	res.render('index.html');
 	Greeting.find(function (err, greetings) {
 		if (err) {
 			console.log('couldnt find a greeting in DB. error '+err);
