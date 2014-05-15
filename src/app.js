@@ -28,7 +28,7 @@ config.DATABASE;
 
 var attendSchema = mongoose.Schema({  
 	name: String,
-	companyName: String,
+	company: String,
 	address: String,
 	phoneNumber: String,
 	email: String,
@@ -51,8 +51,8 @@ app.post('/register', function(req, res) {
 	console.log('Request: ', req.body);
 	var registeredUser = new Attendee({
 		name: req.body.name,
-		companyName: req.body.companyName,
-		addreqs: req.body.addreqs,
+		company: req.body.company,
+		addreqs: req.body.address,
 		phoneNumber: req.body.phoneNumber,
 		email: req.body.email,
 		attendance: req.body.attendance,
