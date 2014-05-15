@@ -22,51 +22,33 @@ config.HOST + ":" +
 config.PORT + "/" +
 config.DATABASE;
 
-var helloGreeting = 'Hello World!';
 
-var greetingSchema = mongoose.Schema({  
-	sentence: String
+
+var registerSchema = mongoose.Schema({  
+	name: String,
+	companyName: String,
+	address: String,
+	phoneNumber: String,
+	email: String,
+	attendance: Boolean,
+	comment: String
 }); 
 
-var Greeting = mongoose.model('Greeting', greetingSchema);
+var Register = mongoose.model('Register', registerSchema);
 db = mongoose.connect(dbPath);
 
 mongoose.connection.on('error', function(err){
 	console.log('database connect error: ' + err);
 });
 
-Greeting.find( function(err, greetings){
-	var greeting = new Greeting({ sentence: helloGreeting });
-	greeting.save(function (err, greetingsav) {
-		if (err){
-			console('couldnt save a greeting to the Db');
-		} else {
-			console.log('new greeting '+greeting.sentence+' was succesfully saved to Db' );
-
-			Greeting.find( function(err, greetings){
-				if( greetings )
-					console.log('checked after save: found '+greetings.length+' greetings in DB' );
-          }); // Greeting.find()
-        } // else
-      }); // greeting.save()
-  }); // Greeting.find()
-
 app.get('/', function(req, res) {
 	res.render('index.html');
-	Greeting.find(function (err, greetings) {
-		if (err) {
-			console.log('couldnt find a greeting in DB. error '+err);
-			next(err);
-		} else {
-			if(greetings){
-				console.log('found '+greetings.length+' greetings in DB');
-				responseText = greetings[0].sentence;
-			}
-			console.log('sending greeting to client: '+responseText);
-			res.send(responseText);
-		}
-	});
 });
+
+app.post('/', function(req, res) {
+	console.log('Response: ', res);
+	console.log('Request: ', req);
+})
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {
