@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var db;
 
-app.use(bodyParser);
+app.use(bodyParser());
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 
