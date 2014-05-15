@@ -24,17 +24,17 @@ config.DATABASE;
 
 
 
-var registerSchema = mongoose.Schema({  
+var attendSchema = mongoose.Schema({  
 	name: String,
 	companyName: String,
 	address: String,
 	phoneNumber: String,
 	email: String,
-	attendance: Boolean,
+	attendance: String,
 	comment: String
 }); 
 
-var Register = mongoose.model('Register', registerSchema);
+var Attendee = mongoose.model('Attendee', attendSchema);
 db = mongoose.connect(dbPath);
 
 mongoose.connection.on('error', function(err){
@@ -45,10 +45,22 @@ app.get('/', function(req, res) {
 	res.render('index.html');
 });
 
-app.post('/', function(req, res) {
-	console.log('Response: ', res);
-	console.log('Request: ', req);
-})
+app.post('/register', function(req, res) {
+	console.log('Request: ', req.body);
+	var registeredUser = new Attendee({
+		name: req.name,
+		companyName: req.companyName,
+		address: req.address,
+		phoneNumber: req.phoneNumber,
+		email: req.email,
+		attendance: req.attendance,
+		comment: req.comment
+	});
+
+	registeredUser.save(function(err, thor) {
+		console.log('Just saved document: ' + thor)
+	});
+});
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {
