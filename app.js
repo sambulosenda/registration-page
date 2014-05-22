@@ -2,6 +2,7 @@ var http = require('http');
 var mongoose = require('mongoose');
 var express = require('express');
 var routes = require('./routes');
+var models = require('./models');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -31,7 +32,6 @@ connection.on('error', function(err){
 	console.log('database connect error: ' + err);
 });
 
-var models = require('./models');
 function db (req, res, next) {
 	req.db = {
 		User: connection.model('User', models.User, 'users'),
