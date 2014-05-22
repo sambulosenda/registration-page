@@ -25,7 +25,6 @@ config.HOST + ":" +
 config.PORT + "/" +
 config.DATABASE; 
 
-var Attendee = mongoose.model('Attendee', attendSchema);
 var connection = mongoose.createConnection(dbPath);
 
 connection.on('error', function(err){
