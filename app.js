@@ -1,6 +1,7 @@
 var http = require('http');
 var mongoose = require('mongoose');
 var express = require('express');
+var routes = require('./routes');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -22,47 +23,26 @@ var dbPath = "mongodb://" + config.USER + ":" +
 config.PASS + "@" +
 config.HOST + ":" +
 config.PORT + "/" +
-config.DATABASE;
-
-
-
-var attendSchema = mongoose.Schema({  
-	name: String,
-	company: String,
-	address: String,
-	phoneNumber: String,
-	email: String,
-	attendance: String,
-	comment: String
-}); 
+config.DATABASE; 
 
 var Attendee = mongoose.model('Attendee', attendSchema);
-db = mongoose.connect(dbPath);
+var connection = mongoose.createConnection(dbPath);
 
-mongoose.connection.on('error', function(err){
+connection.on('error', function(err){
 	console.log('database connect error: ' + err);
 });
 
-app.get('/', function(req, res) {
-	res.render('index.html');
-});
+var models = require('./models');
+function db (req, res, next) {
+	req.db = {
+		User: connection.model('User', models.User, 'users'),
+	};
+	return next();
+}
 
-app.post('/register', function(req, res) {
-	console.log('Request: ', req.body);
-	var registeredUser = new Attendee({
-		name: req.body.name,
-		company: req.body.company,
-		addreqs: req.body.address,
-		phoneNumber: req.body.phoneNumber,
-		email: req.body.email,
-		attendance: req.body.attendance,
-		comment: req.body.comment
-	});
+app.get('/', routes.index);
 
-	registeredUser.save(function(err, thor) {
-		console.log('Just saved document: ' + thor)
-	});
-});
+app.post('/register', routes.register, db);
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {
