@@ -40,8 +40,7 @@ function db (req, res, next) {
 }
 
 app.get('/', routes.index);
-
-app.post('/register', routes.register, db);
+app.post('/register', routes.register.saveUser, db);
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {
