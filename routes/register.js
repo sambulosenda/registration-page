@@ -8,5 +8,5 @@ exports.saveUser = function(req, res, db) {
 		attendance: req.body.attendance,
 		comment: req.body.comment
 	}).save();
-	console.log('saved');
+	res.render('results', {name: req.body.name});
 };

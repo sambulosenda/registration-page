@@ -10,7 +10,9 @@ var db;
 
 app.use(bodyParser());
 app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+//app.engine('html', require('ejs').__express);
+app.set('view engine', 'ejs');
+
 
 var config = {      
 	"USER": "",
