@@ -34,13 +34,13 @@ connection.on('error', function(err){
 
 function db (req, res, next) {
 	req.db = {
-		User: connection.model('User', models.User, 'users'),
+		User: connection.model('User', models.User, 'users')
 	};
 	return next();
 }
 
 app.get('/', routes.index);
-app.post('/register', routes.register.saveUser, db);
+app.post('/register', db, routes.register.saveUser);
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {
