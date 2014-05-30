@@ -42,7 +42,8 @@ function db (req, res, next) {
 }
 
 app.get('/', routes.index);
-app.post('/register', db, routes.register.saveUser);
+app.post('/users', db, routes.users.saveUser);
+app.get('/users', db, routes.users.getAllUsers);
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {

@@ -2,4 +2,4 @@ exports.index = function(req, res) {
 	res.render('index');
 };
 
-exports.register = require('./register');
+exports.users = require('./users');
