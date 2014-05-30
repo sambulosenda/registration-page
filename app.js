@@ -44,6 +44,7 @@ function db (req, res, next) {
 app.get('/', routes.index);
 app.post('/users', db, routes.users.saveUser);
 app.get('/users', db, routes.users.getAllUsers);
+app.get('/export', db, routes.excel.export);
 
 app.use(function(err, req, res, next) {
 	if(req.xhr) {

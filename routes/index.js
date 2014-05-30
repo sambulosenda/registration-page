@@ -3,3 +3,4 @@ exports.index = function(req, res) {
 };
 
 exports.users = require('./users');
+exports.excel = require('./excel');
