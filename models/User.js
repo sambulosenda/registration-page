@@ -7,5 +7,6 @@ module.exports = new Schema({
 	phoneNumber: String,
 	email: String,
 	attendance: String,
-	comment: String
+	comment: String,
+	date: Date
 });

@@ -1,5 +1,7 @@
+var moment = require('moment');
+
 exports.index = function(req, res) {
-	res.render('index.ejs');
+	res.render('index.ejs', {month: moment().format('MMMM')});
 };
 
 exports.users = require('./users');
