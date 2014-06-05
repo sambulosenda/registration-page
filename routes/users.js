@@ -8,11 +8,11 @@ exports.saveUser = function(req, res, db) {
 		attendance: req.body.attendance,
 		comment: req.body.comment
 	}).save();
-	res.render('results', {name: req.body.name});
+	res.render('results.ejs', {name: req.body.name});
 };
 
 exports.getAllUsers = function(req, res, db) {
 	req.db.User.find({}, function(err, users) {
-		res.render('users-list', {users: users});
+		res.render('users-list.ejs', {users: users});
 	});
 };

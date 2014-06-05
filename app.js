@@ -4,14 +4,16 @@ var express = require('express');
 var routes = require('./routes');
 var models = require('./models');
 var bodyParser = require('body-parser');
+var partials = require('express-partials')
 
 var app = express();
 var db;
 
 app.use(bodyParser());
-app.set('views', __dirname + '/views');
-app.engine('ejs', require('ejs').__express);
-app.set('view engine', 'ejs');
+app.use(partials());
+//app.set('views', __dirname + '/views');
+//app.engine('ejs', require('ejs').__express);
+//app.set('view engine', 'ejs');
 
 
 var config = {      
