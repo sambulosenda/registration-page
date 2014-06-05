@@ -10,7 +10,7 @@ var db;
 
 app.use(bodyParser());
 app.set('views', __dirname + '/views');
-//app.engine('html', require('ejs').__express);
+app.engine('ejs', require('ejs').__express);
 app.set('view engine', 'ejs');
 
 
