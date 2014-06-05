@@ -1,23 +1,74 @@
 /* line 1, ../sass/partials/_typography.scss */
 body {
   font-family: "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
-}
-
-/* line 5, ../sass/partials/_typography.scss */
-label {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* line 1, ../sass/partials/_forms.scss */
-.form-group {
+fieldset {
+  border: solid 1px #8cacbb;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+/* line 7, ../sass/partials/_forms.scss */
+fieldset legend {
+  font-size: 16px;
+}
+/* line 11, ../sass/partials/_forms.scss */
+fieldset .form-group {
   padding-bottom: 10px;
 }
-/* line 5, ../sass/partials/_forms.scss */
-.form-group label {
+/* line 15, ../sass/partials/_forms.scss */
+fieldset .form-group label {
   font-weight: 700;
   display: block;
+  margin-bottom: 8px;
 }
-/* line 10, ../sass/partials/_forms.scss */
-.form-group input {
+/* line 21, ../sass/partials/_forms.scss */
+fieldset .form-group input, fieldset .form-group textarea {
   border: solid 1px #8cacbb;
+  border-radius: 3px;
+  padding: 0 6px;
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eeecec), to(white));
+  background-image: -webkit-linear-gradient(top, #eeecec, white);
+  background-image: -moz-linear-gradient(top, #eeecec, white);
+  background-image: -o-linear-gradient(top, #eeecec, white);
+  background-image: linear-gradient(to bottom, #eeecec, #ffffff);
+}
+/* line 28, ../sass/partials/_forms.scss */
+fieldset .form-group input {
+  height: 20px;
+  line-height: 20px;
+}
+
+/* line 1, ../sass/partials/_layout.scss */
+.main-content {
+  width: 960px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 1, ../sass/partials/_buttons.scss */
+.btn {
+  border-radius: 3px;
+  border: solid 1px #8cacbb;
+  height: 30px;
+  padding: 2px 8px;
+  margin: 4px;
+  cursor: pointer;
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eeecec), to(white));
+  background-image: -webkit-linear-gradient(top, #eeecec, white);
+  background-image: -moz-linear-gradient(top, #eeecec, white);
+  background-image: -o-linear-gradient(top, #eeecec, white);
+  background-image: linear-gradient(to bottom, #eeecec, #ffffff);
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 13, ../sass/partials/_buttons.scss */
+a.btn {
+  text-decoration: none;
 }

@@ -1,0 +1,15 @@
+.btn {
+	border-radius:3px;
+	border: solid 1px $grey;
+	height: 30px;
+	padding: 2px 8px;
+	margin: 4px;
+	cursor: pointer;
+	@include css-gradient(#EEECEC, #FFFFFF);
+	text-decoration:none;
+	color: #000;
+}
+
+a.btn {
+	text-decoration:none;
+}
