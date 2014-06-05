@@ -1,0 +1,14 @@
+.table {
+	width: 100%;
+	display: table;
+	border: 1px solid $grey;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	border-radius: 3px;
+
+	th, td {
+		border: 1px solid $grey;
+		text-align: left;
+		padding: 4px;
+	}
+}
