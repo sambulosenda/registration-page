@@ -1,5 +1,23 @@
 /* line 1, ../sass/partials/_typography.scss */
-* {
-  font-family: Arial;
-  font-size: 45px;
+body {
+  font-family: "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+}
+
+/* line 5, ../sass/partials/_typography.scss */
+label {
+  font-size: 12px;
+}
+
+/* line 1, ../sass/partials/_forms.scss */
+.form-group {
+  padding-bottom: 10px;
+}
+/* line 5, ../sass/partials/_forms.scss */
+.form-group label {
+  font-weight: 700;
+  display: block;
+}
+/* line 10, ../sass/partials/_forms.scss */
+.form-group input {
+  border: solid 1px #8cacbb;
 }
