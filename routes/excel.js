@@ -16,7 +16,7 @@ exports.export = function (req, res, db) {
 		users.forEach(function(user, index) {
 			fileData.worksheets[0].data.push(formatRow(user));
 		});
-		fs.writeFileSync('event.xlsx', xlsx.build(fileData), function(err){if (err) throw err;});
+		fs.writeFileSync('event.xlsx', xlsx.build(fileData));
 		res.download('./event.xlsx', 'event.xlsx', function(err) {
 			if(err) throw err;
 			fs.unlink('.event.xlsx');
