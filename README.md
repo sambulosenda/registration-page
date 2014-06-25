@@ -25,6 +25,6 @@ When finished, you're ready to go! Enter this in the prompt to start the applica
 
 Now navigate to this and register away!
 
-http://localhost:8080
+http://localhost:8080/
 
 
