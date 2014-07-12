@@ -11,7 +11,11 @@ It also displays all registered users and is able to export them to an excel spr
 
 ## Installation
 
-Firstly install NodeJS onto your computer which you can do by follwing this URL:
+Firstly install the MongoDB database by following this URL here:
+
+http://docs.mongodb.org/manual/installation/
+
+Once you have done that, next install NodeJS onto your computer which you can do by follwing this URL:
 
 http://nodejs.org/
 
