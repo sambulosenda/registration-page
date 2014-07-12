@@ -17,9 +17,9 @@ app.use("/public", express.static(__dirname + '/public'));
 var config = {      
 	"USER": "",
 	"PASS": "",
-	"HOST": "ec2-54-178-129-235.ap-northeast-1.compute.amazonaws.com", 
+	"HOST": "127.0.0.1", 
 	"PORT": "27017",      
-	"DATABASE": "my_example"  
+	"DATABASE": "registration"  
 };
 
 var dbPath = "mongodb://" + config.USER + ":" +
